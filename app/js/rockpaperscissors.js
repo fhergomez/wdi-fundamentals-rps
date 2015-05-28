@@ -25,16 +25,16 @@ function getPlayerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `getInput()`.
-    move = getInput() || null;
-    return move;
+    move = getInput();
+    return move || null;
 }
 
 function getComputerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
-    move = randomPlay() || null;
-    return move;
+    move = randomPlay();
+    return move || null;
 }
 
 function getWinner(playerMove,computerMove) {
@@ -42,7 +42,23 @@ function getWinner(playerMove,computerMove) {
     // Write code that will set winner to either 'player', 'computer', or 'tie' based on the values of playerMove and computerMove.
     // Assume that the only values playerMove and computerMove can have are 'rock', 'paper', and 'scissors'.
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
-    /* YOUR CODE HERE */
+    if (getPlayerMove() === getComputerMove()) {
+        winner = 'tie';
+    } else if ((getPlayerMove() === 'scissors') && (getComputerMove() === 'rock')) {
+        winner = 'computer';
+    } else if ((getPlayerMove() === 'rock') && (getComputerMove() === 'scissors')) {
+        winner = 'player';
+    } else if ((getPlayerMove() === 'paper') && (getComputerMove() === 'rock')) {
+        winner = 'player';
+    } else if ((getPlayerMove() === 'scissors') && (getComputerMove() === 'paper')) {
+        winner = 'player';
+    } else if ((getPlayerMove() === 'rock') && (getComputerMove() === 'paper')) {
+        winner = 'computer';
+    } else if ((getPlayerMove() === 'paper') && (getComputerMove() === 'scissors')) {
+        winner = 'computer';
+    } else if ((getComputerMove() && getPlayerMove()) === null) {
+        return getInput();
+    }
     return winner;
 }
 
