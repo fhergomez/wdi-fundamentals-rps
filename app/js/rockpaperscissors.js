@@ -25,16 +25,14 @@ function getPlayerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `getInput()`.
-    move = getInput();
-    return move || null;
+    return move || getInput();
 }
 
 function getComputerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
-    move = randomPlay();
-    return move || null;
+    return move || randomPlay();
 }
 
 function getWinner(playerMove,computerMove) {
@@ -42,32 +40,48 @@ function getWinner(playerMove,computerMove) {
     // Write code that will set winner to either 'player', 'computer', or 'tie' based on the values of playerMove and computerMove.
     // Assume that the only values playerMove and computerMove can have are 'rock', 'paper', and 'scissors'.
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
-    if (getPlayerMove() === getComputerMove()) {
+    if (playerMove === computerMove) {
         winner = 'tie';
-    } else if ((getPlayerMove() === 'scissors') && (getComputerMove() === 'rock')) {
+    } else if ((playerMove === 'scissors') && (computerMove === 'rock')) {
         winner = 'computer';
-    } else if ((getPlayerMove() === 'rock') && (getComputerMove() === 'scissors')) {
+    } else if ((playerMove === 'rock') && (computerMove === 'scissors')) {
         winner = 'player';
-    } else if ((getPlayerMove() === 'paper') && (getComputerMove() === 'rock')) {
+    } else if ((playerMove === 'paper') && (computerMove === 'rock')) {
         winner = 'player';
-    } else if ((getPlayerMove() === 'scissors') && (getComputerMove() === 'paper')) {
+    } else if ((playerMove === 'scissors') && (computerMove === 'paper')) {
         winner = 'player';
-    } else if ((getPlayerMove() === 'rock') && (getComputerMove() === 'paper')) {
+    } else if ((playerMove === 'rock') && (computerMove === 'paper')) {
         winner = 'computer';
-    } else if ((getPlayerMove() === 'paper') && (getComputerMove() === 'scissors')) {
+    } else if ((playerMove === 'paper') && (computerMove === 'scissors')) {
         winner = 'computer';
-    } else if ((getComputerMove() && getPlayerMove()) === null) {
-        return getInput();
-    }
+    } 
     return winner;
 }
 
-function playToFive() {
-    console.log("Let's play Rock, Paper, Scissors");
+function playToFive () {
+    console.log("Let's play Rock, Paper, Scissors!!!");
     var playerWins = 0;
     var computerWins = 0;
-    // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
-    /* YOUR CODE HERE */
+    while ((playerWins !== 5) && (computerWins !== 5)) {
+        var playerMove = getPlayerMove();
+        var computerMove = getComputerMove(); 
+        winner = getWinner(playerMove, computerMove);
+        if (winner === "player") {
+            playerWins += 1;
+            console.log("You chose " + playerMove + " while the computer chose " + computerMove + ".");
+            console.log("Round Winner is: player");
+            console.log("The score is currently player " + playerWins + " to computer " + computerWins + ".\n");
+        } else if (winner  === "computer") {
+            computerWins += 1;
+            console.log("You chose " + playerMove + " while the computer chose " + computerMove + ".");
+            console.log("Round Winner is: computer");
+            console.log("The score is currently player " + playerWins + " to computer " + computerWins + ".\n");
+        } else if (winner === 'tie') {
+            console.log("It was a tie!");
+        }
+    }
+    console.log('Final Score: player ' + playerWins + " computer " + computerWins);
     return [playerWins, computerWins];
 }
 
+playToFive();
