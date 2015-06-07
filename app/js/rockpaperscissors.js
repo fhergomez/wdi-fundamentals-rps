@@ -81,6 +81,11 @@ function playToFive () {
         }
     }
     console.log('Final Score: player ' + playerWins + " computer " + computerWins);
+    if (playerWins === 5) {
+        console.log('YOU WIN!!!');
+    } else if (computerWins === 5) {
+        console.log('Sorry, the computer is smarter than you....try again!!!')
+    }
     return [playerWins, computerWins];
 }
 
