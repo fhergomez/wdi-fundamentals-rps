@@ -4,7 +4,7 @@
 'use strict';
 
 function getInput() {
-    console.log("Please choose either 'rock', 'paper', or 'scissors'.")
+    console.log("Please choose either 'rock', 'paper', or 'scissors'.");
     return prompt();
 }
 function randomPlay() {
@@ -65,7 +65,7 @@ function playToFive () {
     while ((playerWins !== 5) && (computerWins !== 5)) {
         var playerMove = getPlayerMove();
         var computerMove = getComputerMove(); 
-        winner = getWinner(playerMove, computerMove);
+        var winner = getWinner(playerMove, computerMove);
         if (winner === "player") {
             playerWins += 1;
             console.log("You chose " + playerMove + " while the computer chose " + computerMove + ".");
@@ -84,7 +84,7 @@ function playToFive () {
     if (playerWins === 5) {
         console.log('YOU WIN!!!');
     } else if (computerWins === 5) {
-        console.log('Sorry, the computer is smarter than you....try again!!!')
+        console.log('Sorry, the computer is smarter than you....try again!!!');
     }
     return [playerWins, computerWins];
 }
